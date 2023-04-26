@@ -4,7 +4,7 @@ I got bored so here's a super simple youtube-dl GUI made with Qt.
 ## Installing
 ```bash
 pip install pipx
-pipx install https://github.com/EEKIM10/simple-ytdl-qt.git
+pipx install git+https://github.com/EEKIM10/simple-ytdl-qt.git
 pipx ensurepath
 simple-ytdl-qt5
 ```
