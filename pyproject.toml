@@ -15,6 +15,10 @@ authors = [
 dependencies = ["PyQt5", "yt-dlp"]
 dynamic = ["version"]
 
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
 [tool.setuptools.dynamic]
 version = { attr = "src.__version__" }
 
