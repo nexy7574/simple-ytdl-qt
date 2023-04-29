@@ -6,10 +6,7 @@ from pathlib import Path
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
-from .widgets.download_console import Console
-
-__version__ = "1.2.7"
-
+from widgets.download_console import Console
 
 PROGRESS_RE = re.compile(r"^\[download]\s+([\d.]+).+$")
 DOWNLOAD_RE = re.compile(r"^\[info]\s+(\S+)")
