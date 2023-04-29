@@ -242,7 +242,8 @@ class MyApp(QWidget):
         layout.addWidget(self.simulate_download_checkbox, 5, 0, 1, 1)
 
         self.setLayout(layout)
-        self.setWindowIcon(QIcon('assets/icon.png'))
+        if Path("assets/icon.png").exists():
+            self.setWindowIcon(QIcon('assets/icon.png'))
         self.setWindowTitle('YTDLP Downloader')
         self.setGeometry(300, 300, 500, 200)
         self.show()
@@ -279,7 +280,6 @@ class MyApp(QWidget):
             audio_quality="0",
             video_format=video_format,
         )
-        print(args)
 
         self.console = Console()
         self.console.show()

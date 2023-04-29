@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools", "setuptools-scm", "wheel"]
+requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 
@@ -10,21 +10,17 @@ readme = {file = "README.md", content-type = "text/markdown"}
 requires-python = ">=3.11"
 license = { text = "GNU GPLv3" }
 authors = [
-    {"name" = "Nexus", "email" = "packages@nexy7574.co.uk"}
+    {name = "Nexus", email = "packages@nexy7574.co.uk"}
 ]
 dependencies = ["PyQt5", "yt-dlp"]
 dynamic = ["version"]
-
-
-[tool.setuptools.packages.find]
-where = ["src"]
 
 [tool.setuptools.dynamic]
 version = { attr = "src.__version__" }
 
 
 [project.scripts]
-simple-ytdl-qt = "src.main:main"
+simple-ytdl-qt-foreground = "src.main:main"
 
 
 [project.gui-scripts]
