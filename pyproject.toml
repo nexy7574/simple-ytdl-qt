@@ -16,7 +16,7 @@ dependencies = ["PyQt5", "yt-dlp"]
 dynamic = ["version"]
 
 [tool.setuptools.dynamic]
-version = { attr = "src.__version__" }
+version = { attr = "main.__version__" }
 
 
 [project.scripts]
