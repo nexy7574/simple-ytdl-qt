@@ -1,11 +1,10 @@
 [build-system]
-requires = ["setuptools", "wheel"]
+requires = ["setuptools", "setuptools-scm", "wheel"]
 build-backend = "setuptools.build_meta"
 
 
 [project]
 name = "simple-ytdl-qt"
-version = "0.0.1"
 description = "A simple GUI for yt-dlp"
 readme = {file = "README.md", content-type = "text/markdown"}
 requires-python = ">=3.11"
@@ -14,6 +13,14 @@ authors = [
     {"name" = "Nexus", "email" = "packages@nexy7574.co.uk"}
 ]
 dependencies = ["PyQt5", "yt-dlp"]
+dynamic = ["version"]
+
+[tool.setuptools.dynamic]
+version = { attr = "src.__version__" }
+
+
+[project.scripts]
+simple-ytdl-qt = "src.main:main"
 
 
 [project.gui-scripts]
