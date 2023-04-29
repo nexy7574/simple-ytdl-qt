@@ -122,6 +122,7 @@ class MyApp(QWidget):
             audio_format: str,
             audio_quality: str,
             video_format: str,
+            verbose: bool
     ):
         base = [
             "yt-dlp",
@@ -133,6 +134,10 @@ class MyApp(QWidget):
             "--newline",
             # "--progress"
         ]
+        if verbose:
+            base += [
+                "--verbose"
+            ]
         if browser:
             base += [
                 "--cookies-from-browser",
@@ -169,6 +174,7 @@ class MyApp(QWidget):
     # noinspection PyUnresolvedReferences,PyArgumentList
     def init_ui(self):
         layout = QGridLayout()
+        self.setMinimumWidth(200)
         self.url_input = QLineEdit(self)
         self.url_input.setPlaceholderText('Enter URL')
         self.url_input.setToolTip('Enter URL')
@@ -239,6 +245,11 @@ class MyApp(QWidget):
         self.simulate_download_checkbox = QCheckBox("Simulate Download", self)
         self.simulate_download_checkbox.setToolTip("Simulate Download")
         layout.addWidget(self.simulate_download_checkbox, 5, 0, 1, 1)
+    
+        # toggle verbose output
+        self.verbose_output_checkbox = QCheckBox("Verbose Output", self)
+        self.verbose_output_checkbox.setToolTip("Verbose Output")
+        layout.addWidget(self.verbose_output_checkbox, 5, 1, 1, 1)
 
         self.setLayout(layout)
         if Path("assets/icon.png").exists():
@@ -269,6 +280,8 @@ class MyApp(QWidget):
         video_format = self.video_format_dropdown.currentText()
         audio_format = self.audio_format_dropdown.currentText()
 
+        verbose = self.verbose_output_checkbox.isChecked()
+
         args = self.get_args(
             url=url,
             output_dir=self.output_dir,
@@ -278,6 +291,7 @@ class MyApp(QWidget):
             audio_format=audio_format,
             audio_quality="0",
             video_format=video_format,
+            verbose=verbose
         )
 
         self.console = Console()

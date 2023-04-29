@@ -12,6 +12,8 @@ class ConsoleOutput(QTextEdit):
         self.setAcceptRichText(False)
         self.setFont(QFont("Consolas", 10))
         self.setGeometry(0, 0, 800, 600)
+        self.setMinimumHeight(400)
+        self.setMinimumWidth(600)
 
     def write(self, text):
         self.append(text)
@@ -87,6 +89,7 @@ class Console(QWidget):
         super().close()
 
     def init_ui(self):
+        self.setMinimumSize(400, 100)
         self.output = ConsoleOutput(self)
 
         # add a close button to the window
@@ -105,6 +108,15 @@ class Console(QWidget):
         self.playlist_progress.setToolTip("Number of videos downloaded: ")
         self.playlist_progress.setVisible(False)
 
+        def toggle_console():
+            self.output.setVisible(not self.output.isVisible())
+            self.window().adjustSize()
+
+        self.toggle_console_output = QPushButton("Toggle Console Output", self)
+        self.toggle_console_output.clicked.connect(
+            toggle_console
+        )
+
         # add to layout
         layout = QGridLayout()
         layout.addWidget(self.close_button, 0, 0, 1, 2)
@@ -112,6 +124,7 @@ class Console(QWidget):
         layout.addWidget(self.playlist_progress, 1, 0, 1, 4)
         layout.addWidget(self.progress_bar, 2, 0, 1, 4)
         layout.addWidget(self.output, 3, 0, 1, 4)
+        layout.addWidget(self.toggle_console_output, 4, 0, 1, 4)
         # align buttons to centre
         layout.setAlignment(Qt.AlignVCenter)
         self.setLayout(layout)
