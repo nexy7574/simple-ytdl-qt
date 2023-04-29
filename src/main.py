@@ -8,7 +8,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from .widgets.download_console import Console
 
-__version__ = "1.2.5"
+__version__ = "1.2.6"
 
 
 PROGRESS_RE = re.compile(r"^\[download]\s+([\d.]+).+$")

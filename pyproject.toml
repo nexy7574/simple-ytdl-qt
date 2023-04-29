@@ -20,8 +20,8 @@ version = { attr = "main.__version__" }
 
 
 [project.scripts]
-simple-ytdl-qt-foreground = "src.main:main"
+simple-ytdl-qt-foreground = "main:main"
 
 
 [project.gui-scripts]
-simple-ytdl-qt5 = "src.main:main"
+simple-ytdl-qt5 = "main:main"
